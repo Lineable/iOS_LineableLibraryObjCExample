@@ -7,9 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "LineableLibrary-Swift.h"
 
-@interface ViewController : UIViewController
+@interface ViewController : UIViewController <LineableDetectorDelegate>
 
+@property (nonatomic,retain) LineableDetector *lineableDetector;
 
 @end
 

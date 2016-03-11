@@ -1,0 +1,14 @@
+PODS:
+  - LineableLibrary (0.1.0)
+
+DEPENDENCIES:
+  - LineableLibrary (from `~/Documents/Libraries/LineableLibrary`)
+
+EXTERNAL SOURCES:
+  LineableLibrary:
+    :path: ~/Documents/Libraries/LineableLibrary
+
+SPEC CHECKSUMS:
+  LineableLibrary: ec34d7c7bdaeed177c41a6a14cb1d9c27f524396
+
+COCOAPODS: 0.39.0

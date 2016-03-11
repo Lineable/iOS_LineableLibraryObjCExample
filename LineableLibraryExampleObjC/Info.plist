@@ -36,5 +36,7 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
+	<key>NSLocationAlwaysUsageDescription</key>
+	<string>Enter what your app does using location in the background (ex:This application monitors your location to find missing Lineable Devices near you.)</string>
 </dict>
 </plist>
