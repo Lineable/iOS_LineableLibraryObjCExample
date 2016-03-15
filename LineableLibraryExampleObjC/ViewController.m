@@ -20,11 +20,19 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.didStart = NO;
     // Do any additional setup after loading the view, typically from a nib.
     _lineableDetector = [LineableDetector sharedDetector];
-    [_lineableDetector setDelegate:self];
+    [_lineableDetector setupWithDelegate:self apiKey:@"111111"];
     
-    self.didStart = NO;
+    //Optional values. Default is interval:60.0 seconds, backgroundmode enabled.
+    [_lineableDetector setDetectInterval:10.0];
+    [_lineableDetector setBackgroundMode:NO];
+}
+
+- (void)viewDidAppear:(BOOL)animated {
+    self.didStart = [_lineableDetector state] == LineableDetectorStateIdle ? NO : YES;
+    [self toggle];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -32,20 +40,22 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (IBAction)startButtonTapped:(id)sender {
-    
+- (void)toggle {
     if (self.didStart) {
-        //Stop
-        self.didStart = NO;
-        [self.startButton setTitle:@"Start" forState:UIControlStateNormal];
-        [_lineableDetector stopTracking];
+        //Start
+        [self.startButton setTitle:@"Stop" forState:UIControlStateNormal];
+        [_lineableDetector start];
     }
     else {
-        //Start
-        self.didStart = YES;
-        [self.startButton setTitle:@"Stop" forState:UIControlStateNormal];
-        [_lineableDetector startTracking];
+        //Stop
+        [self.startButton setTitle:@"Start" forState:UIControlStateNormal];
+        [_lineableDetector stop];
     }
+}
+
+- (IBAction)startButtonTapped:(id)sender {
+    self.didStart = !self.didStart;
+    [self toggle];
 }
 
 - (void)didStartRangingLineables {
@@ -62,24 +72,26 @@
     [self.statusLabel setText:[NSString stringWithFormat:@"%@%@",msg,missingText]];
 }
 
-- (void)statuschanged:(enum LineableDetectorState)status {
-    switch (status) {
-        case LineableDetectorStateErrorSendingLineable:
-            [self.statusLabel setText:@"Cannot send detect info to server"];
+- (void)willDetectLineables {
+    [self.statusLabel setText:@"Listening to nearby Lineables."];
+}
+
+- (void)didFailDetectingLineables:(enum LineableDetectorError)error {
+    switch (error) {
+        case LineableDetectorErrorBluetoothOff:
+            [self.statusLabel setText:@"Bluetooth is Off"];
             break;
-        case LineableDetectorStateGatewayNoMovement:
+        case LineableDetectorErrorGatewayDidNotMove:
             [self.statusLabel setText:@"Gateway didn't move specific amount of distance."];
             break;
-        case LineableDetectorStateNoDetectedLineables:
+        case LineableDetectorErrorConnectionFailed:
+            [self.statusLabel setText:@"Cannot send detect info to server"];
+            break;
+        case LineableDetectorErrorNoLineableDetected:
             [self.statusLabel setText:@"No Lineable Detected."];
             break;
-        case LineableDetectorStateIdle:
-            [self.statusLabel setText:@"Waiting.."];
-            break;
-        case LineableDetectorStatePreparingToSendToServer:
-            [self.statusLabel setText:@"Listening to nearby Lineables."];
-            break;
-        default:
+        case LineableDetectorErrorConnectionTimeout:
+            [self.statusLabel setText:@"Connection Timeout."];
             break;
     }
 }

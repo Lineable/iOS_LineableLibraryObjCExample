@@ -1,0 +1,30 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "95ADE480B99E0321BFFD372361E57E02B3DEEF36",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "AC285CF374DC5B91DF5585F62A7315E881AA8D2F" : 0,
+    "95ADE480B99E0321BFFD372361E57E02B3DEEF36" : 0
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "BAC61A8E-8B5C-41F2-9AE4-E121D1549E84",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "AC285CF374DC5B91DF5585F62A7315E881AA8D2F" : "..\/Documents\/Libraries\/LineableLibrary",
+    "95ADE480B99E0321BFFD372361E57E02B3DEEF36" : "LineableLibraryExampleObjC\/"
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "LineableLibraryExampleObjC",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "LineableLibraryExampleObjC.xcworkspace",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/Lineable\/iOS_LineableLibraryObjCExample.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "95ADE480B99E0321BFFD372361E57E02B3DEEF36"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/Lineable\/iOS_LineableLibrary.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "AC285CF374DC5B91DF5585F62A7315E881AA8D2F"
+    }
+  ]
+}
